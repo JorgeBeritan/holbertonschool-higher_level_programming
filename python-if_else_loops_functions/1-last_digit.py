@@ -6,7 +6,7 @@ num = number
 if number < 0:
     number = -(number)
 
-ld = number % 10 
+ld = number % 10
 if num < 0:
     number = num
     ld = -(ld)
