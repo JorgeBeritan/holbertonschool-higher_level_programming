@@ -4,4 +4,4 @@ def no_c(my_string):
         if i == 'c' or i == 'C':
             continue
         print(i, end="")
-    print()
+    return ""
