@@ -7,3 +7,6 @@ def delete_at(my_list=[], idx=0):
     else:
         my_list.remove(idx)
     return my_list
+
+list = [1, 2, 3, 4, 5]
+print(delete_at(list, 4))
