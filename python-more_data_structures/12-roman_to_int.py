@@ -21,5 +21,5 @@ def roman_to_int(roman_string):
             char_prev = roman[char]
         else:
             return 0
-    
+
     return traduced
