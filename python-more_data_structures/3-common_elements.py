@@ -7,5 +7,5 @@ def common_elements(set_1, set_2):
     for i in set1:
         for i2 in set2:
             if i == i2:
-                value = [i2]
+                value += [i2]
     return value 
