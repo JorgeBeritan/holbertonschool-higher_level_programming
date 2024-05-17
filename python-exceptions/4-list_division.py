@@ -13,6 +13,8 @@ def list_division(my_list_1, my_list_2, list_length):
         except ZeroDivisionError:
             print("division by 0")
             lista.append(0)
+        finally:
+            print(end="")
     return lista
 
 my_l_1 = [10, 8, 4]
