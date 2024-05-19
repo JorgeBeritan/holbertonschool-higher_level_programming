@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Class Saquare
+Class Square
 """
 class Square:
     """
@@ -42,23 +42,26 @@ class Square:
         """
         return self.__position
     @position.setter
-    def position(self, value):
+    def position(self, position):
         """check error 
         """
 
-        if type(value) is not tuple  or len(value) != 2:
+        if type(position) is not tuple  or len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        elif type(value[0]) is not int or value[0] < 0:
+        elif type(position[0]) is not int or position[0] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
-        elif type(value[1]) is not int or value[1]:
+        elif type(position[1]) is not int or position[1]:
             raise("position must be a tuple of 2 positive integers")
-        self.__position = value
+        self.__position = position
     def my_print(self):
         """
         Print a square
         """
-        if self.size:
-            print("\n" * self.position[1], end="")
-            print("\n".join([" " * self.position[0] + "#" * self.size] * self.size))
-        else:
-            print()
+        if self.__size == 0:
+            print("")
+            return
+        [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            print("")
