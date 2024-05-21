@@ -1,1 +1,21 @@
-no c de que va esto 
+Examples:
+    >>> add_integer(1, 2)
+    3
+    >>> add_integer(100, -2)
+    98
+    >>> add_integer(2)
+    100
+    >>> add_integer(100.3, -2)
+    98
+     >>> add_integer(4.5, 2.3)
+    6
+    >>> add_integer("a", 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+    >>> add_integer(1, "b")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+    >>> add_integer(1.9)
+    99
