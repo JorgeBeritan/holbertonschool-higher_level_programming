@@ -1,12 +1,15 @@
 #!/usr/bin/python3
+"""Is a Square Class
+"""
+
 class Square:
     """Represents a square.
 
-    Attributes:
-        size (int): The size of one side of the square.
-        position (tuple): The position of the square.
+Attributes:
+size (int): The size of one side of the square.
+position (tuple): The position of the square.
 
-    """
+"""
     def __init__(self, size=0, position=(0,0)):
         self.size = size
         self.position = position
