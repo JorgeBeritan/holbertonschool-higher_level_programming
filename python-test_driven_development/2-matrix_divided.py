@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""A function for dived a matrix
+"""
 
 
 def matrix_divided(matrix, div):
