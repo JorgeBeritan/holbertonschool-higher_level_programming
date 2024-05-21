@@ -31,8 +31,8 @@ TypeError: b must be an integer
 >>> add_integer(float('inf'), 3)
 Traceback (most recent call last):
 ...
-ValueError: a cannot be infinity or NaN
+OverflowError: a cannot convert float infinity to integer
 >>> add_integer(3, float('inf'))
 Traceback (most recent call last):
 ...
-ValueError: b cannot be infinity or NaN
+OverflowError: b cannot convert float infinity to integer
