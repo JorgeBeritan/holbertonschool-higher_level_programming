@@ -2,6 +2,8 @@
 """Is a function to add a and b
 """
 def add_integer(a, b=98):
+
+
     """Add two integers.
     Return a and b
     """
