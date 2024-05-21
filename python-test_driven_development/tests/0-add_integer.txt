@@ -20,12 +20,12 @@ Traceback (most recent call last):
 TypeError: b must be an integer
 >>> add_integer(1.9)
 99
->>> add_integer(float('inf'))
-Traceback (most recent call  last):
-...
-TypeError: a must be an integer
 >>> import sys
 >>> add_integer(sys.float_info.max + 1e292)
 Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(float('inf'))
+Traceback (most recent call  last):
 ...
 TypeError: a must be an integer
