@@ -6,8 +6,9 @@
 def matrix_divided(matrix, div):
     """Divide a matrix with this function
     """
-    if not matrix  or not isinstance(matrix, list):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    if not matrix or not isinstance(matrix, list):
+        raise TypeError("matrix must be a matrix (list of lists) \
+                        of integers/floats")
     for row in matrix:
         if not isinstance(row, list):
             raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
