@@ -15,4 +15,4 @@ Como estas?
 >>> text_indentation()
 Traceback (most recent call last):
 ...
-TypeError: print_square() missing 1 required positional argument: 'size'
+TypeError: text_indentation() missing 1 required positional argument: 'text'
