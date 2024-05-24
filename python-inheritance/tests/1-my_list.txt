@@ -5,4 +5,6 @@
 >>> my_list.append(28)
 >>> my_list.append(1)
 >>> my_list.print_sorted()
+>>> print(my_list.print(sorted))
 [1, 6, 12, 28]
+>>> 
