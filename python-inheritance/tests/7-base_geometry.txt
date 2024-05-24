@@ -5,4 +5,4 @@
 
 >>> bg = BaseGeometry()
 >>> bg.area()
- [Exception] area() is not implemented
+[Exception] area() is not implemented
