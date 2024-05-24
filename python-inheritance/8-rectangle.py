@@ -2,11 +2,9 @@
 """Area class add
 """
 
-
 class BaseGeometry:
     """A base Geometry
     """
-
     def __init__(self, width, height):
         """Constructo init
         """
