@@ -8,10 +8,13 @@ class BaseGeometry:
     """
 
     def __init__(self, width, height):
+        """Constructo init
+        """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
+
     def integer_validator(self, name, value):
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
