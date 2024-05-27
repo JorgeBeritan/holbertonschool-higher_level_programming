@@ -8,5 +8,5 @@ def read_file(filename=""):
     """
     with open(filename, "r", encoding="utf-8") as line:
         mostrar = line.read()
-    print(mostrar)
+    print(mostrar, end="")
     line.close()
