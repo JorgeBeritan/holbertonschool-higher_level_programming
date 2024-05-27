@@ -5,7 +5,6 @@
 
 def append_write(filename="", text=""):
     """In this function we open a file with w and append a string"""
-    with open(filename, "w", encoding="utf-8") as archive:
-        line = archive.read().splitlines()
-    line.append(text)
+    with open(filename, "a", encoding="utf-8") as archive:
+        archive.write(text)
     return len(text)
