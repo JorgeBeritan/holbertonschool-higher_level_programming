@@ -4,7 +4,7 @@
 
 
 def class_to_json(obj):
-    """In this function we learn how return description 
+    """In this function we learn how return description
     dictionary for JSON serialization
     """
     json_dict = {}
