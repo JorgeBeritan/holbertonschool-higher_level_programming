@@ -1,10 +1,15 @@
 #!/usr/bin/python3
+"""Made By Jorge Beritan
+"""
 
 
 import pickle
 
-class CustomObject:
 
+class CustomObject:
+    """In this we buil a serialize and deserialize
+    method
+    """
     def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
