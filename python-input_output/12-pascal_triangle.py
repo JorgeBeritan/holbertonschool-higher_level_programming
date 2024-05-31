@@ -14,7 +14,7 @@ def pascal_triangle(n):
         z = x[:]
         z.append(1)
         position = len(x)
-        for i  in range(1, position):
+        for i in range(1, position):
             z[i] = x[i - 1] + x[i]
         x = z[:]
         y.append(x)
