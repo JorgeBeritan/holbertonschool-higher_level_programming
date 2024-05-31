@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+"""Made by Jorge Beritan
+"""
 
 def pascal_triangle(n):
+    """In this function we learn about made an algorithm to make a Pascal Triangle
+    """
     x = []
     y = []
 
