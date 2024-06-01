@@ -32,12 +32,10 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            self.wfile.write("Endpoint not found")
+            self.send_error(404, "Endpoint not found")
         else:
             self.send_response(404)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write("Endpoint not found")
+            self.send_error(404, "Endpoint not found")
 
 
 port = HTTPServer(("", 8000), Server)
