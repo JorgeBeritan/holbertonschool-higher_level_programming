@@ -23,6 +23,7 @@ def fetch_and_save_posts():
         data = response.json()
         with open("posts.csv", "w", encoding="utf-8") as archive:
             writer = csv.DictWriter(archive, fieldnames = ["id", "title", "body"])
-            writer.writeheader
+            writer.writeheader()
             for i in data:
                 writer.writerow({"id": i["id"], "title": i["title"], "body": i["body"]})
+
