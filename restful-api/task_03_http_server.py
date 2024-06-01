@@ -30,7 +30,7 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(info).encode())
         else:
             self.error_message_format = "Endpoint no found"
-            self.send_error(404, self.error_message_format)
+            self.send_error(404, "Not Found", self.error_message_format)
             
 
 
