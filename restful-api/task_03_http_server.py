@@ -29,7 +29,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info).encode())
         elif self.path == '/undefined':
-            self.send_error(404, "The request endpoint '{}' was not found".format(self.path))
+            return self.send_error(404, "Endpoint not found")
 
 
 port = HTTPServer(("", 8000), Server)
