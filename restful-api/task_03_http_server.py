@@ -29,7 +29,9 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info).encode())
         else:
-            return 404, "Not Found"
+            self.error_message_format = "Endpoint no found"
+            self.send_error(404, self.error_message_format)
+            
 
 
 port = HTTPServer(("", 8000), Server)
