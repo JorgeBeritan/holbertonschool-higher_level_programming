@@ -28,7 +28,7 @@ class Server(BaseHTTPRequestHandler):
             self.end_headers()
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info).encode())
-        else:
+        elif self.path == '/undefined':
             self.send_error(404, "The request endpoint '{}' was not found".format(self.path))
 
 
