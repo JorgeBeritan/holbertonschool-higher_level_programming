@@ -29,8 +29,14 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info).encode())
         else:
-            self.error_message_format = "Endpoint no found"
-            self.send_error(404, "Not Found", self.error_message_format)
+            self.handle_404()
+    
+    def handle_404(self):
+        self.send_response(404)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        response = {"message": "Endpoint not found"}
+        self.wfile.write(bytes(json.dumps(response).encode()))
             
 
 
