@@ -29,7 +29,7 @@ class Server(BaseHTTPRequestHandler):
             info = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info).encode())
         else:
-            error = self.error_message_format = "Not Found"
+            error = self.error_message_format = "404 Not Found"
             self.send_error(404, error)
             
 
