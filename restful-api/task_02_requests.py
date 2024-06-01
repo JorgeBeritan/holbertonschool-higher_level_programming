@@ -16,7 +16,7 @@ def fetch_and_print_posts():
         for i in data:
             print(i["title"])
 
-def fecth_and_save_posts():
+def fetch_and_save_posts():
     """In this function we put the all information for the api on archive.csv"""
     response = requests.get("https://jsonplaceholder.typicode.com/posts")
     if response.status_code == 200:
