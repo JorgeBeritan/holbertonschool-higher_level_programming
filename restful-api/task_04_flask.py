@@ -16,7 +16,7 @@ def get_data():
     response = jsonify(list(users.keys()))
     return response
 
-@app.route('/user/<username>', methods=['GET'])
+@app.route('/users/<username>', methods=['GET'])
 def get_user(username):
     if username in users:
         response = jsonify(users[username])
@@ -24,7 +24,7 @@ def get_user(username):
     else:
         return jsonify({"error": "User not found"}), 404
 
-@app.route('/add_user', methods=['POST', 'GET'])
+@app.route('/add_user', methods=['POST'])
 def add_user():
     data = request.get_json()
     username = data.get('username')
