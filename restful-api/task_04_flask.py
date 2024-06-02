@@ -1,16 +1,44 @@
 #!/usr/bin/python3
 
 from flask import Flask, jsonify, request
+import json
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-user = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},"jorge": {"name": "Jorge", "age": 21, "city": "Los Angeles"}}
-@app.route('/')
+app.json.sort_keys = False
+
+users = {
+    "jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
+    "jorge": {"name": "Jorge", "age": 21, "city": "Los Angeles"}
+}
+
+@app.route('/', methods=['GET'])
 def home():
     return "Welcome to the Flask API!"
 
-@app.route('/data')
+@app.route('/data', methods=['GET'])
 def get_data():
-    return jsonify(list(user.keys()))
+    response = json.dumps(list(users.keys()))
+    return response
+
+@app.route('/user/<username>', methods=['GET'])
+def get_user(username):
+    if users:
+        response = jsonify({"username": username,
+                            "name": users[username]["name"],
+                            "age": users[username]["age"],
+                            "city": users[username]["city"]
+                            })
+        return response
+    else:
+        return jsonify({"error": "User not found"})
+
+@app.route('/add_user', methods=['POST', 'GET'])
+def add_user():
+    data = request.get_json()
+    username = data.get('username')
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
+    users[username] = data
+    return jsonify({"message": "User added", "user": data}), 201
 
 @app.route('/status')
 def get_stutas():
