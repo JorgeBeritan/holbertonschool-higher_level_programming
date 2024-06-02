@@ -5,10 +5,7 @@ import json
 app = Flask(__name__)
 app.json.sort_keys = False
 
-users = {
-    "jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-    "jorge": {"name": "Jorge", "age": 21, "city": "Los Angeles"}
-}
+users = {}
 
 @app.route('/', methods=['GET'])
 def home():
