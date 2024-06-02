@@ -13,7 +13,7 @@ def home():
 
 @app.route('/data', methods=['GET'])
 def get_data():
-    response = json.dumps(list(users.keys()))
+    response = jsonify(list(users.keys()))
     return response
 
 @app.route('/user/<username>', methods=['GET'])
@@ -26,7 +26,7 @@ def get_user(username):
                             })
         return response
     else:
-        return jsonify({"error": "User not found"})
+        return jsonify({"error": "User not found"}), 404
 
 @app.route('/add_user', methods=['POST', 'GET'])
 def add_user():
