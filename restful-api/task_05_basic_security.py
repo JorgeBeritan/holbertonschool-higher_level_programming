@@ -1,58 +1,61 @@
 #!/usr/bin/python3
-
-from flask import Flask, request, jsonify
+from flask import Flask
+from flask import jsonify
+from flask import request
+from flask import Flask
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 
+
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 app = Flask(__name__)
-
-# Configuración de la clave secreta para JWT
-app.config['JWT_SECRET_KEY'] = 'your_secret_key'  # Cambia esto a una clave secreta más segura
-
+app.config['JWT_SECRET_KEY'] = "clave-super-secreta-2.0"
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
-users = [
-    {"username": "admin", "password": generate_password_hash('admin_password'), "rol": "admin"},
-    {"username": "user", "password": generate_password_hash('user_password'), "rol": "user"}
-]
+users = {
+    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
+    "admin": {"username": "admin1", "password": generate_password_hash("admin_password"),"role": "admin"}
+}
 
 @auth.verify_password
 def verify_password(username, password):
-    user = next((user for user in users if user["username"] == username), None)
-    if user and check_password_hash(user["password"], password):
-        return username
+    if username in users and \
+            check_password_hash(users[username].get('password'), password):
+        return "Basic Auth: Access Granted"
+    
+@app.route("/basic-protected", methods=["GET"])
+@auth.login_required
+def basic_protected():
+    return "Basic Auth: Access Granted"
 
-@app.route('/login', methods=["POST", "GET"])
+@app.route("/login", methods=["POST"])
 def login():
-    data = request.get_json()
-    if not data or not data.get("username") or not data.get("password"):
-        return jsonify({"message": "Missing username or password"}), 400
-    
-    username = data.get("username")
-    password = data.get("password")
-    user = next((user for user in users if user["username"] == username), None)
-    if user and check_password_hash(user["password"], password):
-        access_token = create_access_token(identity=username)
-        return jsonify({"access_token": access_token}), 200
-    
-    return jsonify({"message": "Invalid credentials"}), 401
+    user = request.get_json()
+    username = request.json.get("username")
+    password = request.json.get("password")
 
-@app.route("/protected")
+    if users and check_password_hash(user[username].get('password'), password):
+        access_token = create_access_token(
+            identity={"username": username, "role": users["role"].get(username)})
+        return jsonify(access_token=access_token)
+    return jsonify({'error': "data invalid"}), 401
+
+@app.route("/jwt-protected")
 @jwt_required()
-def protected_route():
-    return jsonify({"message": "This is a protected route"}), 200
+def protected():
+    return "JWT Auth: Access Granted"
 
 @app.route("/admin-only")
 @jwt_required()
-def admin_only_route():
+def admin():
     current_user = get_jwt_identity()
-    user = next((user for user in users if user["username"] == current_user), None)
-    if user and user["rol"] == "admin":
-        return jsonify({"message": "This is an admin-only route"}), 200
-    
-    return jsonify({"message": "Unauthorized access"}), 403
+    if current_user["role"] == "admin":
+        return "Admin Access: Granted"
+    return jsonify({"error": "Admin access required"}), 403
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
