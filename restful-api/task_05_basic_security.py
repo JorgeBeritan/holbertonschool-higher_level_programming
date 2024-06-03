@@ -25,7 +25,8 @@ users = {
 def verify_password(username, password):
     if username in users and \
             check_password_hash(users[username].get('password'), password):
-        return "Basic Auth: Access Granted"
+        return users.get(username)
+    return None
     
 @app.route("/basic-protected", methods=["GET"])
 @auth.login_required
