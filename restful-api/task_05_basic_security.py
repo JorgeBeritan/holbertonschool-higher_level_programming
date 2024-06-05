@@ -2,7 +2,6 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-from flask import Flask
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -24,9 +23,9 @@ users = {
 @auth.verify_password
 def verify_password(username, password):
     if username in users and \
-            check_password_hash(users[username].get('password'), password):
+            check_password_hash(users.get(username)['password'], password):
         return users.get(username)
-    return None
+    return False
     
 @app.route("/basic-protected", methods=["GET"])
 @auth.login_required
@@ -35,13 +34,11 @@ def basic_protected():
 
 @app.route("/login", methods=["POST"])
 def login():
-    user = request.get_json()
     username = request.json.get("username")
     password = request.json.get("password")
 
-    if users and check_password_hash(user[username].get('password'), password):
-        access_token = create_access_token(
-            identity={"username": username, "role": users["role"].get(username)})
+    if users and check_password_hash(users.get(username)['password'], password):
+        access_token = create_access_token(identity={"username": username, "role": users.get(username)['role']})
         return jsonify(access_token=access_token)
     return jsonify({'error': "data invalid"}), 401
 
