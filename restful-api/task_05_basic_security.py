@@ -11,7 +11,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = "clave-super-secreta-2.0"
+app.config['SECRET_KEY'] = "clave-super-secreta-2.0"
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
@@ -34,6 +34,7 @@ def basic_protected():
 
 @app.route("/login", methods=["POST"])
 def login():
+    data = request.get_json()
     username = request.json.get("username")
     password = request.json.get("password")
 
