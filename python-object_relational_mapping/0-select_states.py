@@ -8,7 +8,7 @@ def list_states(username, password, database):
         host="localhost",
         port=3306,
         user=username,
-        pwd=password,
+        passwd=password,
         db=database
     )
     cursor = db.cursor()
