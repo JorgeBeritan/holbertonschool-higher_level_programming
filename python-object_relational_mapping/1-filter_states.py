@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+
+"""
+IN this script we learn how to filter name
+"""
+
+
 import MySQLdb
 import sys
 
