@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+
+"""
+In this script we learn how list a row in a databases
+"""
+
+
 import MySQLdb
 import sys
 
