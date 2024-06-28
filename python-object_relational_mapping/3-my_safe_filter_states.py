@@ -1,5 +1,12 @@
 #!/usr/bin/python3
 
+
+"""
+In this script we search on safe way a state
+"""
+
+
+
 import MySQLdb
 import sys
 
