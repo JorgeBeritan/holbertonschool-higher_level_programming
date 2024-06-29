@@ -1,5 +1,13 @@
 #!/usr/bin/python3
 
+
+"""
+In this script we learn how to use inner join with query
+on MySQLbd
+"""
+
+
+
 import MySQLdb
 import sys
 
