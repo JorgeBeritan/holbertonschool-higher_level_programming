@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+"""
+In this script we learn how to fitler information
+In this script we learn how to fitler information
+"""
+
 
 from model_state import Base, State
 from sqlalchemy import create_engine
