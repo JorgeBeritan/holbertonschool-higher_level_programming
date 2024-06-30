@@ -19,11 +19,13 @@ def list_id(username, password, database):
     engine = create_engine(dburl)
     Session = sessionmaker(bind=engine)
     session = Session()
-    query = session.query(State).filter(State.id == 1)
+    query = session.query(State).order_by(State.id).first()
 
-    for i in query:
-        print("{}: {}".format(i.id, i.name))
-
+    if query is not None:
+        print("{}: {}".format(query.id, query.name))
+    else:
+        print("Nothing")
+    session.close()
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
