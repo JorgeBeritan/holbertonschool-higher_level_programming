@@ -13,17 +13,17 @@ from model_state import Base, State
 
 def list_state(username, password, database):
     dburl = 'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password,\
-            database)
+            database, pool_pre_ping=True)
     engine = create_engine(dburl)
-
-    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).order_by(id).all()
+    states = session.query(State).order_by(State.id)
 
     for i in states:
-        print(f"{states.id}: {states.name}")
+        print("{}: {}".format(i.id, i.name))
+
+    session.close()
 
 if __name__ == "__main__":
 
