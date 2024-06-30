@@ -12,7 +12,8 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
 def list_state(username, password, database):
-    dburl = 'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database)
+    dburl = 'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password,\
+            database)
     engine = create_engine(dburl)
 
     Base.metadata.create_all(engine)
