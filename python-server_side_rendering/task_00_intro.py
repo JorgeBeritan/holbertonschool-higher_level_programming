@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import os
 
 def generate_invitations(template, attendees):
     if not template:
