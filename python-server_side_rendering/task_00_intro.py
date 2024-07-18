@@ -8,9 +8,9 @@ def generate_invitations(template, attendees):
     if not attendees:
         return "No data provided, no output files generated"
 
-    if isinstance(template, str):
+    if not isinstance(template, str):
         return "Template is empty, no output files generated"
-    elif all(isinstance(item, dict) for item in attendees):
+    elif not all(isinstance(item, dict) for item in attendees):
         return "No data provide, no output files generated"
     
 
