@@ -16,7 +16,7 @@ def generate_invitations(template, attendees):
     for index, replacements in enumerate(attendees):
         file_open = template
         for key, value in replacements.items():
-            file_open = file_open.replace(f"{{{key}}}", str(value))
+            file_open = file_open.replace(f"{{{key}}}", str(value) or "N/A")
 
         output = f"output_{index + 1}.txt"
         with open(output, "w") as file:
