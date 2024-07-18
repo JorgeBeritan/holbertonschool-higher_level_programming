@@ -2,12 +2,16 @@
 
 
 def generate_invitations(template, attendees):
+    if not template:
+        raise ValueError("template is required")
+    if not attendees:
+        raise ValueError("attendees is required")
+
     if isinstance(template, str):
         raise TypeError("template must be a string")
     elif all(isinstance(item, dict) for item in attendees):
         raise TypeError("attendes must be a list of dictionaries")
-    elif  template and attendees:
-        raise ValueError("Template or attendes is required")
+    
 
     for index, replacements in enumerate(attendees):
         file_open = template
