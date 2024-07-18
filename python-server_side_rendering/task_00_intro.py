@@ -3,14 +3,14 @@
 
 def generate_invitations(template, attendees):
     if not template:
-        raise ValueError("Template is empty, no output files generated")
+       return "Template is empty, no output files generated"
     if not attendees:
-        raise ValueError("No data provided, no output files generated")
+        return "No data provided, no output files generated"
 
     if isinstance(template, str):
-        raise TypeError("template must be a string")
+        return "Template is empty, no output files generated"
     elif all(isinstance(item, dict) for item in attendees):
-        raise TypeError("attendes must be a list of dictionaries")
+        return "No data provide, no output files generated"
     
 
     for index, replacements in enumerate(attendees):
