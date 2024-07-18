@@ -20,5 +20,5 @@ def generate_invitations(template, attendees):
             file_open = file_open.replace(f"{{{key}}}", str(value) or "N/A")
 
         output = f"output_{index + 1}.txt"
-        with open(output, "w") as file:
+        with open("output_" + str(index + 1) + ".txt", "w") as file:
             file.write(file_open)
