@@ -3,9 +3,9 @@
 
 def generate_invitations(template, attendees):
     if not template:
-        raise ValueError("template is required")
+        raise ValueError("Template is empty, no output files generated")
     if not attendees:
-        raise ValueError("attendees is required")
+        raise ValueError("No data provided, no output files generated")
 
     if isinstance(template, str):
         raise TypeError("template must be a string")
