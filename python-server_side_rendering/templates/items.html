@@ -6,9 +6,9 @@
 <body>
 	{% include 'header.html' %}
 
-	{% if items %}
+	{% if data %}
 		<ul>
-			{% for item in items %}
+			{% for item in data %}
 				<li>{{ item }}</li>
 			{% endfor %}
 		</ul>
