@@ -27,11 +27,11 @@ def items():
 
 @app.route('/products')
 def products():
-    source = request.args.get('source', '')
+    source = request.args.get('source')
     product_id = request.args.get('id')
 
-    if source not in ['json', 'csv']:
-        return render_template('product_display.html', error="Wrong source")
+    if source not in  ['json', 'csv']:
+        return render_template('product_display.html', errorMessage="Wrong source")
 
     file = f"products.{source}"
     def rjf(file):
@@ -50,13 +50,13 @@ def products():
     try:
         products = read_function(file)
     except FileNotFoundError:
-        return render_template('product_display.html', error=f"File {file} notfound")
+        return render_template('product_display.html', errorMessage=f"File {file} notfound")
 
     if product_id:
         product_id = int(product_id)
         products = [i for i in products if i['id'] == product_id]
         if not products:
-            return render_template('product_display.html', error="Product not found")
+            return render_template('product_display.html', errorMessage="Product not found")
 
     return render_template('product_display.html', products=products)
 
