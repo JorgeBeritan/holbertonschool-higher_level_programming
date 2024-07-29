@@ -1,6 +1,6 @@
-const el = document.querySelector('header');
-const redEl = document.querySelector('#red-header');
+const header = document.querySelector('header');
+const redHeader = document.querySelector('#red_header');
 
-redEl.onclick = function() {
-  el.style.color = '#FF0000';
-}
+redHeader.addEventListener('click', function() {
+  header.style.color = '#FF0000';
+})
